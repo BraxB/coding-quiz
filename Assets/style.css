@@ -21,13 +21,18 @@ body {
 
 .container {
   position: relative;
-  width: 25rem;
+  width: 40rem;
   max-width: 80%;
   height: 20rem;
   background-color: rgb(85, 87, 105);
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 10px 2px;
+}
+
+.question-container {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #start-btn {
@@ -55,4 +60,8 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   outline: none;
+}
+
+.hide {
+  display: none;
 }
