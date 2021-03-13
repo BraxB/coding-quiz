@@ -1,4 +1,4 @@
-// TODO build function for timer
+// TODO build out if statement for end of game
 
 var startEl = document.getElementById('start-btn');
 var questionEl = document.getElementById('question');
@@ -8,13 +8,21 @@ var timerEl = document.getElementById('timer');
 // variable to loop over the questions
 let qIndex = 0;
 let score = 0;
+let timer = 75;
+
+timerEl.textContent = timer;
 
 // when clicked the start button hides itself and begins displaying the question and answer elements
 startEl.addEventListener('click', startGame);
 
+//function that displays the q&a objects and initializes timer after 
 function startGame() {
     startEl.classList.add('hide');
     answerEl.style.display = 'grid';
+    setInterval(function(){ 
+        timer--; 
+        timerEl.textContent = timer;
+    }, 1000);
     score = 0;
     setQuestion(qIndex);
 }
@@ -51,10 +59,16 @@ function selectAnswer(e) {
     }
     else {
         qIndex++;
+        timer = timer - 15;
         resetAnswers();
         setQuestion(qIndex)
     }
 }
+
+// the following code will end the game when conditions are met
+// if (qIndex > questions.length || timer = 0) {
+    
+// }
 
 // created an array of objects for each question
 var questions = [
