@@ -6,7 +6,7 @@ var timerEl = document.getElementById('timer');
 // variable to loop over the questions
 let qIndex = 0;
 let score = 0;
-let timer = 75;
+let timer = 60;
 
 timerEl.textContent = timer;
 
@@ -14,20 +14,19 @@ timerEl.textContent = timer;
 startEl.addEventListener('click', startGame);
 
 //function that displays the q&a objects and initializes timer after start is pressed. 
-// SHOULD stop and break out when the timer reaches 0, but it keeps going to negative for some reason
 function startGame() {
     startEl.classList.add('hide');
     answerEl.style.display = 'grid';
     score = 0;
-    if (timer > 0) {
-        setInterval(function(){ 
-            timer--; 
-            timerEl.textContent = timer;
-        }, 1000)
-    }
-    else {
-        endGame();
-    }
+    var timerInterval = setInterval(function() { 
+        timer--; 
+        timerEl.textContent = timer;
+    
+        if (timer === 0) {
+            clearInterval(timerInterval);
+            endGame();
+        }
+    }, 1000);
     setQuestion(qIndex);
 }
 
