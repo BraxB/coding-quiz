@@ -1,14 +1,13 @@
 // TODO build function for timer
-// TODO build next question function
-// build function for answering with if statement with different behavior depending on answer true or false
 
 var startEl = document.getElementById('start-btn');
 var questionEl = document.getElementById('question');
 var answerEl = document.getElementById('answer-grid');
+var timerEl = document.getElementById('timer');
 
 // variable to loop over the questions
 let qIndex = 0;
-
+let score = 0;
 
 // when clicked the start button hides itself and begins displaying the question and answer elements
 startEl.addEventListener('click', startGame);
@@ -16,6 +15,7 @@ startEl.addEventListener('click', startGame);
 function startGame() {
     startEl.classList.add('hide');
     answerEl.style.display = 'grid';
+    score = 0;
     setQuestion(qIndex);
 }
 
@@ -28,14 +28,33 @@ function setQuestion(question) {
         if (answer.correct) {
             button.dataset.correct = answer.correct;
         }
-        // button.addEventListener('click', selectAnswer);
+        button.addEventListener('click', selectAnswer);
         answerEl.appendChild(button);
     })
 }
 
-// function resetAnswers() {
-//     answerEl.remove(children);
-// }
+// this function removes answers from the previous question and must be called whenever a new q&a object is set
+function resetAnswers() {
+    while (answerEl.firstChild) {
+        answerEl.removeChild(answerEl.firstChild);
+    }
+}
+
+//allows user to select an answer and sets behavior on whether answer is correct or not
+function selectAnswer(e) {
+    var selectedButton = e.target;
+    if (selectedButton.dataset.correct) {
+        score = score + 100;
+        qIndex++;
+        resetAnswers();
+        setQuestion(qIndex);
+    }
+    else {
+        qIndex++;
+        resetAnswers();
+        setQuestion(qIndex)
+    }
+}
 
 // created an array of objects for each question
 var questions = [
