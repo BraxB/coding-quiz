@@ -2,13 +2,14 @@ var startEl = document.getElementById('start-btn');
 var questionEl = document.getElementById('question');
 var answerEl = document.getElementById('answer-grid');
 var timerEl = document.getElementById('timer');
+var scoreEl = document.getElementById('score-container')
 
 // variable to loop over the questions
 let qIndex = 0;
 let score = 0;
 let timer = 60;
 
-timerEl.textContent = timer;
+timerEl.textContent = timer + ' seconds';
 
 // when clicked the start button hides itself and begins displaying the question and answer elements
 startEl.addEventListener('click', startGame);
@@ -20,7 +21,7 @@ function startGame() {
     score = 0;
     var timerInterval = setInterval(function() { 
         timer--; 
-        timerEl.textContent = timer;
+        timerEl.textContent = timer + ' seconds'
     
         if (timer === 0) {
             clearInterval(timerInterval);
@@ -62,6 +63,7 @@ function selectAnswer(e) {
     var selectedButton = e.target;
     if (selectedButton.dataset.correct) {
         score = score + 100;
+        scoreEl.textContent = score + ' points'
         qIndex++;
         resetAnswers();
         setQuestion(qIndex);

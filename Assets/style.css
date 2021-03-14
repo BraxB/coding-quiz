@@ -33,6 +33,7 @@ body {
 .question-container {
   font-size: 18px;
   font-weight: bold;
+  text-align: center;
 }
 
 #start-btn {
@@ -60,6 +61,14 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   outline: none;
+}
+
+.upper-row {
+  display:inline;
+}
+
+#score-container {
+  margin-left: 63%;
 }
 
 .hide {
