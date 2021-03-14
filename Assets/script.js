@@ -78,9 +78,17 @@ function selectAnswer(e) {
 function endGame() {
     resetAnswers();
     questionEl.textContent = "Great job! Type your initials below to log your score.";
-    var initials = document.createElement('input');
-    answerEl.appendChild(initials);
-    timer = 75;
+    var initialsInput = document.createElement('input');
+    var logBtn = document.createElement('button');
+    answerEl.appendChild(initialsInput);
+    answerEl.appendChild(logBtn);
+    logBtn.setAttribute('class', 'btn');
+    logBtn.innerText = 'Enter';
+    logBtn.addEventListener('click', logScore)
+    function logScore() {
+        key = initialsInput.value
+        localStorage.setItem(key, score);
+    }
 }
 
 // created an array of objects for each question
