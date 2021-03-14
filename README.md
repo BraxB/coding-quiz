@@ -6,7 +6,9 @@ This repository is in reference to the coding quiz application built for week 4 
 
 This was a very tough assigment and there are many things I would like to continue tweaking style-wise. Future iterations of this will include noises or a brief flash of red on the card for incorrect answers as well as a "restart game" button to play again without needing to refresh the page completely.
 
-The most difficult part of this was without a doubt getting the timer to function as intended. I'll be honest, it's still not perfect as the timer does continue counting down to zero after a user hits the end game screen. I couldn't figure a way to get that to stop, so I just hid the timer element as it has no impact on anything after the game has already ended. 
+The most difficult part of this was without a doubt getting the timer to function as intended. It's still not perfect as the timer does continue counting down to zero after a user hits the end game screen. I couldn't figure a way to get that to stop, so I just hid the timer element as it has no impact on anything after the game has already ended. 
+
+![Screenshot of final product](https://github.com/BraxB/coding-quiz/blob/main/Assets/deployedpic.png?raw=true)
 
 Acceptance criteria below was included with assignment.
 
@@ -28,13 +30,10 @@ THEN I can save my initials and my score
 
 
 
-## Review
+## Usage
 
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
+[Repository Link](https://github.com/BraxB/coding-quiz)  
+[Deployed Application](https://braxb.github.io/coding-quiz/)
 
 ---
 
