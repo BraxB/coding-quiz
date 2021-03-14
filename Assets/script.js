@@ -97,7 +97,8 @@ function endGame() {
             localStorage.setItem(key, score);
         }
     }
-
+    
+    // creates the necessary elements and functions to view scores
     var viewScores = document.createElement('button');
     viewScores.addEventListener('click', showScores);
     viewScores.setAttribute('class', 'btn');
