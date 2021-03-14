@@ -74,21 +74,48 @@ function selectAnswer(e) {
     }
 }
 
-// the following code will end the game when conditions are met
+// the following code will end the game when conditions are met and present user with elements to log their score or view high scores
 function endGame() {
     resetAnswers();
+    timerEl.classList.add('hide');
     questionEl.textContent = "Great job! Type your initials below to log your score.";
+
+    // following section contains functionality to log score
     var initialsInput = document.createElement('input');
     var logBtn = document.createElement('button');
     answerEl.appendChild(initialsInput);
     answerEl.appendChild(logBtn);
     logBtn.setAttribute('class', 'btn');
     logBtn.innerText = 'Enter';
-    logBtn.addEventListener('click', logScore)
+    logBtn.addEventListener('click', logScore);
     function logScore() {
         key = initialsInput.value
-        localStorage.setItem(key, score);
+        if (key == '') {
+           alert('Please enter your initials') 
+        }
+        else {
+            localStorage.setItem(key, score);
+        }
     }
+
+    var viewScores = document.createElement('button');
+    viewScores.addEventListener('click', showScores);
+    viewScores.setAttribute('class', 'btn');
+    viewScores.innerText = 'View High Scores';
+    answerEl.appendChild(viewScores);
+
+    function showScores() {
+        var highScoresTable = document.createElement('ol');
+        answerEl.appendChild(highScoresTable);
+        var scores = Object.entries(localStorage);
+        for (i = 0; i < Object.entries(localStorage).length; i++) {
+            var liEl = document.createElement('li');
+            liEl.textContent = scores[i];
+            highScoresTable.appendChild(liEl);
+        }
+        viewScores.classList.add('hide');
+    }
+
 }
 
 // created an array of objects for each question
